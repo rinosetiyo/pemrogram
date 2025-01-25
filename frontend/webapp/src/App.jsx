@@ -1,23 +1,26 @@
 import { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import Hero from './components/Hero'
 import Card from './components/Card'
+import Footer from './components/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
       <Navbar />
-      <div className='container my-5'>
-      <Card/>
-        <h1 className='text-center'>Hello, world!</h1>
-        <p className='text-center'>You clicked {count} times</p>
-        <div className='d-flex justify-content-center'>
-          <button onClick={() => setCount(count + 1)}>Click me</button>
-        </div>
+      <div className="container my-4">
+        <h1>Untitled Design & Design Photography</h1>
+        <p className='text-muted'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque vel corporis voluptatem deserunt ratione, unde consequuntur maxime! Vel saepe blanditiis porro accusamus, esse fugiat earum obcaecati adipisci labore facere. Expedita?</p>
       </div>
-      <Footer/>
+      <Hero />
+      <div className="container mt-5 mb-4">
+        <h5>Featured Blog Posts</h5>
+      </div>
+      <Card />
+      <Footer />
     </div>
   )
 }

@@ -5,12 +5,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function Card() {
     return (
-        <div className="container">
+        <div className="container my-4">
             <div className="row">
                 <div className="col-md-4">
-                    <div className="card">
-                        <img src={sosmedImage} alt="card image" className="card-img-top" />
-                        <div className="card-body">
+                    <div className="card border-0">
+                        <img src={sosmedImage} alt="card image" className="card-img-top" style={{ height: '250px' }}/>
+                        <div className="card-body mx-0 px-0">
                             <h5 className="card-title">
                                 Ini adalah sebuah karya seni
                             </h5>

@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z%zf$ea(=h2co-3m_5c!v#l!05l!w-$r*c4hfytc0jyjmvylee'
+SECRET_KEY = 'django-insecure-7s18x-e)(bebqa$+^-1t3y&_^hayld-s*#qz**y8!1y5m5++p='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,11 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
+    # local apps
     'userauths',
 
-    # third party
+    #third_party_apps
     'import_export',
+
 ]
 
 MIDDLEWARE = [
@@ -57,12 +58,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-AUTH_USER_MODEL = 'userauths.User'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,6 +87,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'userauths.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -124,8 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

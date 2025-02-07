@@ -1,6 +1,6 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.db.models.signals import post_save
+from django.db import models # type: ignore
+from django.contrib.auth.models import AbstractUser # type: ignore
+from django.db.models.signals import post_save # type: ignore
 
 # Create your models here.
 class User(AbstractUser):

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     #third_party_apps
     'import_export',
+    'taggit',
 
 ]
 

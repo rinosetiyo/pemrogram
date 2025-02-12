@@ -21,7 +21,7 @@ class Post(models.Model):
     author = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    featured_blog = models.BooleanField(default=False)
+    is_featured = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='posts', blank=True, null=True)
 
     def __str__(self):

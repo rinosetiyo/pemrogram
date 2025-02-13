@@ -1,5 +1,7 @@
 from django.shortcuts import render # type: ignore
 from blog.models import Post, Comment, Category
+from blog.forms import CommentForm
+from django.conf import settings # type: ignore
 
 # Create your views here.
 
@@ -22,12 +24,27 @@ def post_detail(request, post_slug):
     comments = Comment.objects.filter(post=post, parent=None).order_by('-created_at')
     categories = Category.objects.all()
     comment_count = Comment.objects.filter(post=post).count()
+    comment_form = CommentForm()
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            postid = request.POST.get('post_id')
+            post = Post.objects.get(id=postid)
+            comment.post = post
+            content = request.POST.get('content')
+            comment.content = content
+            comment.save()
+
     context = {
         'post': post,
         'comments': comments,
         'categories': categories,
         'comment_count': comment_count,
         'recent_posts': recent_posts,
+        'comment_form': comment_form,
     }
     return render(request, 'single-post.html', context)
 

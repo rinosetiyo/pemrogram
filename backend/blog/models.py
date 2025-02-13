@@ -1,5 +1,8 @@
 from django.db import models # type: ignore
+from django.conf import settings # type: ignore
 from taggit.managers import TaggableManager # type: ignore
+
+user = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class Category(models.Model):
@@ -18,7 +21,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     content = models.TextField()
     tags = TaggableManager(blank=True)
-    author = models.CharField(max_length=100)
+    author = models.ForeignKey(user, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_featured = models.BooleanField(default=False)
@@ -30,7 +33,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
-    author = models.CharField(max_length=100)
+    author = models.ForeignKey(user, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.DO_NOTHING)

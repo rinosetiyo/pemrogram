@@ -115,26 +115,15 @@
           <section id="comment-form" class="comment-form section">
             <div class="container">
 
-              <form action="">
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 
                 <h4>Post Comment</h4>
-                <p>Your email address will not be published. Required fields are marked * </p>
+                <p>fill the comment </p>
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                  </div>
-                </div>
-                <div class="row">
+                  <input type="hidden" name="post_id" value="{{post.id}}">
                   <div class="col form-group">
-                    <input name="website" type="text" class="form-control" placeholder="Your Website">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col form-group">
-                    <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                    <textarea name="content" class="form-control" placeholder="Your Comment*"></textarea>
                   </div>
                 </div>
 
@@ -160,7 +149,7 @@
                 <div class="d-flex align-items-center w-100">
                   <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
                   <div>
-                    <h4>Jane Smith</h4>
+                    <h4>{{post.author}}</h4>
                     <div class="social-links">
                       <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
                       <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
@@ -171,7 +160,7 @@
                 </div>
 
                 <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                  {{post.author.userprofile.bio}}
                 </p>
 
               </div>

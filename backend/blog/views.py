@@ -6,7 +6,7 @@ from django.conf import settings # type: ignore
 # Create your views here.
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')[:3]
     featured_posts = Post.objects.filter(is_featured=True)
     tags = Post.tags.all()
     categories = Category.objects.all()

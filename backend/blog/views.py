@@ -23,7 +23,6 @@ def post_detail(request, post_slug):
     recent_posts = Post.objects.all().order_by('-created_at')[:3]
     comments = Comment.objects.filter(post=post, parent=None).order_by('-created_at')
     categories = Category.objects.all()
-    comment_count = Comment.objects.filter(post=post).count()
     comment_form = CommentForm()
 
     if request.method == 'POST':
@@ -42,11 +41,10 @@ def post_detail(request, post_slug):
         'post': post,
         'comments': comments,
         'categories': categories,
-        'comment_count': comment_count,
         'recent_posts': recent_posts,
         'comment_form': comment_form,
     }
-    return render(request, 'single-post.html', context)
+    return render(request, 'blog-single.html', context)
 
 def category(request, category_slug):
     categories = Category.objects.all()

@@ -480,9 +480,9 @@
                     <a href="#"><span class="fa fa-user mr-2"></span>{{ p.author }}</a>
                   </p>
                 </div>
-                <h3 class="heading"><a href="#">{{ p.title }}</a></h3>
+                <h3 class="heading"><a href="{% url "post_detail" p.slug %}">{{ p.title }}</a></h3>
                 <p>{{ p.content|slice:':100' }}...</p>
-                <a href="blog.html" class="btn btn-secondary py-2 px-3">Read more</a>
+                <a href="{% url "post_detail" p.slug %}" class="btn btn-secondary py-2 px-3">Read more</a>
               </div>
             </div>
           </div>

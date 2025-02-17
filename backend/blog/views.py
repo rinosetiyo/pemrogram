@@ -1,4 +1,4 @@
-from django.shortcuts import render # type: ignore
+from django.shortcuts import render, redirect # type: ignore
 from blog.models import Post, Comment, Category
 from blog.forms import CommentForm
 from django.conf import settings # type: ignore
@@ -7,16 +7,23 @@ from django.conf import settings # type: ignore
 
 def index(request):
     posts = Post.objects.all().order_by('-created_at')[:3]
-    featured_posts = Post.objects.filter(is_featured=True)
     tags = Post.tags.all()
     categories = Category.objects.all()
     context = {
         'posts': posts,
         'tags': tags,
         'categories': categories,
-        'featured_posts': featured_posts,
     }
     return render(request, 'index.html', context)
+
+def blog(request):
+    posts = Post.objects.all().order_by('-created_at')
+    categories = Category.objects.all()
+    context = {
+        'posts': posts,
+        'categories': categories,
+    }
+    return render(request, 'blog.html', context)
 
 def post_detail(request, post_slug):
     post = Post.objects.get(slug=post_slug)
@@ -28,14 +35,42 @@ def post_detail(request, post_slug):
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            postid = request.POST.get('post_id')
-            post = Post.objects.get(id=postid)
-            comment.post = post
-            content = request.POST.get('content')
-            comment.content = content
-            comment.save()
+            parent_id = request.POST.get('parent')
+            parent_obj = Comment.objects.filter(id=parent_id).first() if parent_id else None
+
+            new_comment = comment_form.save(commit=False)
+            new_comment.author = request.user
+            new_comment.post = post
+            new_comment.parent = parent_obj
+            new_comment.save()
+
+            return redirect('post_detail', post_slug=post_slug)
+
+
+    # this is basic logic for comment reply, but it's not robust
+    # 
+    # if request.method == 'POST':
+    #     comment_form = CommentForm(request.POST)
+    #     if comment_form.is_valid():
+    #         parent_obj = None
+    #         if request.POST.get('parent'):
+    #             parent_obj = Comment.objects.get(id=request.POST.get('parent'))
+    #             if parent_obj:
+    #                 reply_comment = comment_form.save(commit=False)
+    #                 reply_comment.parent = parent_obj
+    #                 reply_comment.author = request.user
+    #                 reply_comment.post = post
+    #                 reply_comment.save()
+    #                 return redirect('post_detail', post_slug=post_slug)
+    #         else:
+    #             comment = comment_form.save(commit=False)
+    #             comment.author = request.user
+    #             postid = request.POST.get('post_id')
+    #             post = Post.objects.get(id=postid)
+    #             comment.post = post
+    #             content = request.POST.get('content')
+    #             comment.content = content
+    #             comment.save()
 
     context = {
         'post': post,

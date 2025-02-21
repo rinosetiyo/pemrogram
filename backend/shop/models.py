@@ -18,7 +18,7 @@ class DigitalProduct(models.Model):
     category = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, related_name='products', blank=True, null=True)
     cover_image = models.ImageField(upload_to='digital_products/cover', blank=True, null=True)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     file = models.FileField(upload_to='digital_products/')
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)

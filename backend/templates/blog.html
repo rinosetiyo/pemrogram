@@ -7,9 +7,9 @@
       <div class="row no-gutters slider-text align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
           <p class="breadcrumbs">
-            <span class="mr-2"><a href="{% url 'index' %}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Our Blog <i class="fa fa-chevron-right"></i></span>
+            <span class="mr-2"><a href="{% url 'index' %}">Beranda <i class="fa fa-chevron-right"></i></a></span> <span>Blog Kami <i class="fa fa-chevron-right"></i></span>
           </p>
-          <h1 class="mb-0 bread">Our Blog</h1>
+          <h1 class="mb-0 bread">Blog Kami</h1>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
                 <h3 class="heading"><a href="{% url "post_detail" post.slug %}">{{ post.title|slice:':20' }}...</a></h3>
                 <p>{{ post.content|slice:':100' }}</p>
                 <p>
-                  <a href="{% url "post_detail" post.slug %}" class="btn btn-secondary py-2 px-3">Read more</a>
+                  <a href="{% url "post_detail" post.slug %}" class="btn btn-secondary py-2 px-3">Baca selengkapnya</a>
                 </p>
               </div>
             </div>

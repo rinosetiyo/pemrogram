@@ -6,11 +6,11 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
         <div class="col-md-7 ftco-animate">
-          <span class="subheading">Welcome to StudyLab</span>
-          <h1 class="mb-4">We Are Online Platform For Make Learn</h1>
-          <p class="caps">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          <span class="subheading">Selamat datang di StudyLab</span>
+          <h1 class="mb-4">Kami Merupakan Platform Online untuk Belajar</h1>
+          <p class="caps">Jauh di sana, di balik pegunungan kata, jauh dari negara Vokalia dan Consonantia</p>
           <p class="mb-0">
-            <a href="#" class="btn btn-primary">Our Course</a> <a href="#" class="btn btn-white">Learn More</a>
+            <a href="#" class="btn btn-primary">Kursus Kami</a> <a href="#" class="btn btn-white">Pelajari Lebih Lanjut</a>
           </p>
         </div>
       </div>
@@ -23,30 +23,30 @@
         <div class="col-md-7"></div>
         <div class="col-md-5 order-md-last">
           <div class="login-wrap p-4 p-md-5">
-            <h3 class="mb-4">Register Now</h3>
+            <h3 class="mb-4">Daftar Sekarang</h3>
             <form action="#" class="signup-form">
               <div class="form-group">
-                <label class="label" for="name">Full Name</label>
+                <label class="label" for="name">Nama Lengkap</label>
                 <input type="text" class="form-control" placeholder="John Doe" />
               </div>
               <div class="form-group">
-                <label class="label" for="email">Email Address</label>
+                <label class="label" for="email">Alamat Email</label>
                 <input type="text" class="form-control" placeholder="johndoe@gmail.com" />
               </div>
               <div class="form-group">
-                <label class="label" for="password">Password</label>
-                <input id="password-field" type="password" class="form-control" placeholder="Password" />
+                <label class="label" for="password">Kata Sandi</label>
+                <input id="password-field" type="password" class="form-control" placeholder="Kata Sandi" />
               </div>
               <div class="form-group">
-                <label class="label" for="password">Confirm Password</label>
-                <input id="password-field" type="password" class="form-control" placeholder="Confirm Password" />
+                <label class="label" for="password">Konfirmasi Kata Sandi</label>
+                <input id="password-field" type="password" class="form-control" placeholder="Konfirmasi Kata Sandi" />
               </div>
               <div class="form-group d-flex justify-content-end mt-4">
                 <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
               </div>
             </form>
             <p class="text-center">
-              Already have an account? <a href="#signin">Sign In</a>
+              Sudah punya akun? <a href="#signin">Masuk</a>
             </p>
           </div>
         </div>
@@ -58,41 +58,38 @@
     <div class="container">
       <div class="row justify-content-center pb-4">
         <div class="col-md-12 heading-section text-center ftco-animate">
-          <span class="subheading">Start Downloading Digital Products</span>
-          <h2 class="mb-4">Pick Your Needs</h2>
+          <span class="subheading">Mulai Unduh Produk Digital</span>
+          <h2 class="mb-4">Pilih Kebutuhan Anda</h2>
         </div>
       </div>
       <div class="row">
         {% for d in digitals %}
-        <div class="col-md-4 ftco-animate">
-          <div class="project-wrap">
-            {% if d.cover_image %}
-            <a href="{{ d.link|default:'#' }}" class="img" style="background-image: url('{{ d.cover_image.url }}');">
-              <span class="price">{{ d.category|default:"Software" }}</span>
-            </a>
-            {% else %}
-            <a href="{{ d.link|default:'#' }}" class="img" style="background-image: url('{% static 'images/work-1.jpg' %}');">
-              <span class="price">{{ d.category|default:"Software" }}</span>
-            </a>
-            {% endif %}
-            <div class="text p-4">
-              <h3>
-          <a href="{{ d.link|default:'#' }}">
-            {{ d.title|default:"Design for the web with adobe photoshop" }}
-          </a>
-              </h3>
-              <p class="advisor">
-          Advisor <span>{{ d.advisor|default:"Tony Garret" }}</span>
-              </p>
-              <ul class="d-flex justify-content-between">
-          <li>
-            <span class="flaticon-shower"></span>{{ d.views|default:"2300" }}
-          </li>
-          <li class="price">Rp {{ d.price|default:"199" }}</li>
-              </ul>
+          <div class="col-md-4 ftco-animate">
+            <div class="project-wrap">
+              {% if d.cover_image %}
+                <a href="{{ d.link|default:'#' }}" class="img" style="background-image: url('{{ d.cover_image.url }}');"><span class="price">{{ d.category|default:'Software' }}</span></a>
+              {% else %}
+                <a href="{{ d.link|default:'#' }}" class="img" style="background-image: url('{% static 'images/work-1.jpg' %}');"><span class="price">{{ d.category|default:'Software' }}</span></a>
+              {% endif %}
+              <div class="text p-4">
+                <h3><a href="{{ d.link|default:'#' }}">{{ d.title|default:'Design for the web with adobe photoshop' }}</a></h3>
+                <p class="advisor">
+                  Advisor <span>{{ d.advisor|default:'Tony Garret' }}</span>
+                </p>
+                <ul class="d-flex justify-content-between">
+                  <li>
+                    <span class="flaticon-shower"></span>{{ d.views|default:'2300' }}
+                  </li>
+                  <li class="price">Rp {{ d.price|default:'199' }}</li>
+                </ul>
+                <div class="add-to-cart mt-3">
+                  <p>
+                    <a href="{{ d.link|default:'#' }}" class="btn btn-primary py-2 mr-1">Download</a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
         {% endfor %}
       </div>
     </div>
@@ -392,8 +389,8 @@
     <div class="container">
       <div class="row justify-content-center pb-4">
         <div class="col-md-12 heading-section text-center ftco-animate">
-          <span class="subheading">Our Blog</span>
-          <h2 class="mb-4">Recent Post</h2>
+          <span class="subheading">Blog Kami</span>
+          <h2 class="mb-4">Postingan Terbaru</h2>
         </div>
       </div>
       <div class="row d-flex">
@@ -414,7 +411,7 @@
                 </div>
                 <h3 class="heading"><a href="{% url 'post_detail' p.slug %}">{{ p.title|slice:':20' }}...</a></h3>
                 <p>{{ p.content|slice:':100' }}...</p>
-                <a href="{% url 'post_detail' p.slug %}" class="btn btn-secondary py-2 px-3">Read more</a>
+                <a href="{% url 'post_detail' p.slug %}" class="btn btn-secondary py-2 px-3">Baca selengkapnya</a>
               </div>
             </div>
           </div>

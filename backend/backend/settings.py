@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     # local apps
     'userauths',
     'blog',
-    'shop',
 
     #third_party_apps
     'import_export',

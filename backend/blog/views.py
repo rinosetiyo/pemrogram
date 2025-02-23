@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect # type: ignore
 from blog.models import Post, Comment, Category
-from shop.models import DigitalProduct, Order, CategoryProduct # type: ignore
 from blog.forms import CommentForm
 from django.http import JsonResponse # type: ignore
 from django.conf import settings # type: ignore
@@ -9,10 +8,8 @@ from django.conf import settings # type: ignore
 
 def index(request):
     posts = Post.objects.all().order_by('-created_at')[:3]
-    digitals = DigitalProduct.objects.all().order_by('-created')[:3]
     context = {
         'posts': posts,
-        'digitals': digitals,
     }
     return render(request, 'index.html', context)
 

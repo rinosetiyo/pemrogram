@@ -9,15 +9,16 @@ function Card() {
             <div className="row">
                 <div className="col-md-4">
                     <div className="card border-0">
-                        <img src={sosmedImage} alt="card image" className="card-img-top" style={{ height: '250px' }}/>
+                        <img src={sosmedImage} alt="card image" className="card-img-top rounded-4" style={{ height: '200px' }}/>
                         <div className="card-body mx-0 px-0">
+                            <span className="btn btn-outline-primary rounded-5 btn-sm mb-2">Category Name</span>
                             <h5 className="card-title">
                                 Ini adalah sebuah karya seni
                             </h5>
                             <p className="card-text text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore vitae ducimus labore culpa voluptas, repudiandae quaerat at delectus ipsam nisi?</p>
                             <div className="d-flex align-items-center">
                                 <img src={sosmedImage} alt="circle image" className="rounded-circle me-2" style={{ width: '40px', height: '40px' }} />
-                                <p className="fw-semibold mb-0">Rino setiyo | 26 sep 2024</p>
+                                <p className="fw-medium mb-0">Rino setiyo | 26 sep 2024</p>
                             </div>
                         </div>
                     </div>

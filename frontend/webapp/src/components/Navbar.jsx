@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function Navbar() {
     return (
-        <div className="container-fluid shadow">
+        <div className="container-fluid">
             <div className="container">
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">

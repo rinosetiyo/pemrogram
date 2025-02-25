@@ -21,7 +21,7 @@ function App() {
       </div>
       <Hero />
       <div className="container mt-5 mb-4">
-        <h5 className="text-center">Featured Blog Posts</h5>
+        <h5 className="">Featured Blog Posts</h5>
       </div>
       <Card />
       <Footer />

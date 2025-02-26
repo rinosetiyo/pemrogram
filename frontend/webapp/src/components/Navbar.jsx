@@ -18,9 +18,6 @@ function Navbar() {
                                     <a className="nav-link active" aria-current="page" href="#">Home</a>
                                 </li>
                                 <li className="nav-item mx-1">
-                                    <a className="nav-link" href="#">Product</a>
-                                </li>
-                                <li className="nav-item mx-1">
                                     <a className="nav-link" href='#'>Interview</a>
                                 </li>
                                 <li className="nav-item mx-1">

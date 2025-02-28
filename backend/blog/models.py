@@ -41,3 +41,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.author} on {self.post}'
+
+
+class Subscriber(models.Model):
+    user = models.ForeignKey(user, on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.email
